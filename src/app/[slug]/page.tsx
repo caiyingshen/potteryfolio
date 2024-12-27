@@ -25,7 +25,7 @@ export default function PostPage({ params }: { params: Promise<{ slug: string }>
   async function getPost() {
     const post = await client.fetch<SanityDocument>(
       portfolioEntryQuery,
-      params,
+      await params,
       options
     );
     setPost(post);

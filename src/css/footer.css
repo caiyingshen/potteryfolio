@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     padding: 2rem 2rem 4rem 2rem;
+    margin-left: 13px; 
   }
   .footer__link__svg {
     display: block;
