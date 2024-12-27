@@ -1,3 +1,11 @@
+## Potteryfolio 
+
+This is a lightweight carousel of my pottery portfolio, created with Next.js and Sanity. 
+
+It is currently deployed at https://potteryfolio.vercel.app/ 
+
+## Next.js boilerplate 
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
