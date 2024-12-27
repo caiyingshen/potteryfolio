@@ -42,9 +42,9 @@ const PostsCarousel: React.FC<PropType> = (props) => {
     setPosts(posts);
   }
 
-  useEffect(() => {
-    getPortfolioEntries();
-  }, []);
+    useEffect(() => {
+      getPortfolioEntries();
+    }, []);
 
   const {
     prevBtnDisabled,
@@ -55,10 +55,10 @@ const PostsCarousel: React.FC<PropType> = (props) => {
 
   return (
     <section className="embla">
-      <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {posts ? (
-            posts.map((post, i) => {
+      {posts ? (
+        <div className="embla__viewport" ref={emblaRef}>
+          <div className="embla__container">
+            {posts.map((post, i) => {
               const postImageUrl = post.image
                 ? urlFor(post.image)?.url()
                 : null;
@@ -76,12 +76,17 @@ const PostsCarousel: React.FC<PropType> = (props) => {
                   )}
                 </div>
               );
-            })
-          ) : (
-            <img src="https://giphy.com/embed/uIJBFZoOaifHf52MER" />
-          )}
+            })}
+          </div>
         </div>
-      </div>
+      ) : (
+        <img
+          className="loading-spinner"
+          src="https://i.gifer.com/ZKZg.gif"
+          height="25px"
+          width="25px"
+        />
+      )}
 
       <div className="embla__controls">
         <div className="embla__buttons">

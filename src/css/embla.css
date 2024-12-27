@@ -9,6 +9,7 @@
     background: rgb(197,209,192, 0.5);
     padding-top: 2rem;
     padding-bottom: 2rem;
+    min-height: 400px; 
   }
   .embla__container {
     display: flex;
@@ -72,4 +73,8 @@
     width: 35%;
     height: 35%;
   }
+
+  .loading-spinner {
+    margin: auto;
+}
   

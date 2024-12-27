@@ -42,17 +42,12 @@ export default async function PostPage({
           ← Back to posts
         </Link>
         {postImageUrl && (
-          <img
-            className="post-image"
-            src={postImageUrl}
-            alt={post.title} /*  */
-          />
+          <img className="post-image" src={postImageUrl} alt={post.title} />
         )}
       </div>
 
       <div className="notes-section">
         <h1 className="text-3xl font-bold mb-8">{post.title}</h1>
-
         <div className="prose">
           <p className="p1">
             Published: {new Date(post.publishedAt).toLocaleDateString()}
@@ -62,7 +57,9 @@ export default async function PostPage({
       </div>
 
       <div className="updates">
-        <h3 className="text-2xl font-bold mb-8">Progress Updates</h3>
+        {pieceUpdates.length > 0 && (
+          <h3 className="text-2xl font-bold mb-8">Progress Updates</h3>
+        )}
         {pieceUpdates.map(
           (
             up: { image: SanityImageSource; notes: string; updatedAt: string },
@@ -84,9 +81,9 @@ export default async function PostPage({
 
                 <div className="update-notes">
                   <p className="p1">
-                     {new Date(up.updatedAt).toLocaleDateString()}
+                    {new Date(up.updatedAt).toLocaleDateString()}
                   </p>
-                  <p > {up.notes}</p>
+                  <p> {up.notes}</p>
                 </div>
               </div>
             );

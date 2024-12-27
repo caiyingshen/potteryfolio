@@ -8,9 +8,6 @@ html {
   line-height: 1.15;
   background-color: var(--background-site);
   font-size: 62.5%;
-  /* font-family: Inter, 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol'; */
 }
 *,
 *::before,
@@ -35,11 +32,22 @@ body {
     justify-content: center;
 }
 .heading {
-    margin-bottom: 2rem;
     text-align: center;
     max-height: 5rem;
     font-family: Lexend Zetta;
     font-size: 36;
+}
+.menu {
+  display: flex;
+  width: 300px; 
+  padding: 2rem;
+  font-size: 14;
+  font-weight: 40;
+  font-family: Lexend Zetta;
+  gap: 20px; 
+}
+.menu-button {
+  padding-left: 1rem;
 }
 .theme-light {
   --brand-primary: rgb(47, 112, 193);
