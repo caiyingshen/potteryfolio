@@ -15,6 +15,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import "../css/embla.css";
 import Link from "next/link";
+import { allPortfolioEntriesQuery } from "@/static/queries";
 
 type PropType = {
   slides?: number[];
@@ -28,19 +29,17 @@ const urlFor = (source: SanityImageSource) =>
     : null;
 
 const PostsCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
+  const { options } = props;
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
-
   const [posts, setPosts] = useState<SanityDocument[]>();
 
   async function getPortfolioEntries() {
     const posts = await client.fetch<SanityDocument[]>(
-      '*[_type == "portfolioEntry"]{ name, slug, publishedAt, image, body, pieceIds }',
+      allPortfolioEntriesQuery,
       {},
       { next: { revalidate: 30 } }
     );
     setPosts(posts);
-    console.log(posts);
   }
 
   useEffect(() => {
@@ -58,23 +57,29 @@ const PostsCarousel: React.FC<PropType> = (props) => {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {(posts ?? []).map((post, i) => {
-            const postImageUrl = post.image ? urlFor(post.image)?.url() : null;
+          {posts ? (
+            posts.map((post, i) => {
+              const postImageUrl = post.image
+                ? urlFor(post.image)?.url()
+                : null;
 
-            return (
-              <div className="embla__slide" key={`slide-${i}`}>
-                {postImageUrl && (
-                  <Link href={`/${post.slug.current}`}>
-                    <img
-                      src={postImageUrl}
-                      alt={post.name}
-                      className="embla__slide__img"
-                    />
-                  </Link>
-                )}
-              </div>
-            );
-          })}
+              return (
+                <div className="embla__slide" key={`slide-${i}`}>
+                  {postImageUrl && (
+                    <Link href={`/${post.slug.current}`}>
+                      <img
+                        src={postImageUrl}
+                        alt={post.name}
+                        className="embla__slide__img"
+                      />
+                    </Link>
+                  )}
+                </div>
+              );
+            })
+          ) : (
+            <img src="https://giphy.com/embed/uIJBFZoOaifHf52MER" />
+          )}
         </div>
       </div>
 

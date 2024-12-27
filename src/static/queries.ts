@@ -1,7 +1,10 @@
+export const allPortfolioEntriesQuery = '*[_type == "portfolioEntry"]{ name, slug, publishedAt, image, body, pieceIds }';
 
-export function fetchAllQuery(type: string) {
-    return `*[
-    _type == "${type}"
-    && defined(slug.current)
-  ]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}`;
-}
+export const portfolioEntryQuery = `*[_type == "portfolioEntry" && slug.current == $slug][0]`;
+
+export const updatesQuery = `*[_type == "update"  && count((pieceIds[]._ref)[@ in $pieceIdArray]) > 0]{ 
+    pieceIds, 
+      notes, 
+      image,
+      updatedAt
+      }`
