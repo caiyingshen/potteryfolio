@@ -37,6 +37,21 @@ body {
     font-family: Lexend Zetta;
     font-size: 36;
 }
+.intro {
+  margin-top: 3rem;
+  font-family: Lexend;
+  font-size: 18;
+  text-align:center;
+}
+.bio-container {
+  margin-right: 20%;
+  margin-left: 20%;
+}
+.bio {
+  font-family: Lexend;
+  font-size: 16;
+  text-align: left;
+}
 .menu {
   display: flex;
   width: 300px; 

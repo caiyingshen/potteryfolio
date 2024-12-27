@@ -33,7 +33,6 @@ export default async function PostPage({
     { pieceIdArray: pieceIdRefs },
     options
   );
-  console.log(pieceUpdates);
 
   return (
     <div className="post-container">
